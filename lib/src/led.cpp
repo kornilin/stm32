@@ -126,11 +126,11 @@ LedState Led::GetState()
 	return this->state;
 }
 
-LedState Led::SetState(LedState state)
-{
-	this->state = state;
-	return OK;
-}
+//LedState Led::SetState(LedState state)
+//{
+//	this->state = state;
+//	return OK;
+//}
 
 LedState Led::On()
 {
@@ -152,13 +152,13 @@ LedState Led::Off()
 	return state;
 }
 
-//LedState Led::Toggle()
-//{
-//	if(state == OFF || state == ON || state == INIT)
-//	{
-//		GPIO_WriteBit(port, pin, (BitAction) !GPIO_ReadOutputDataBit(port, pin));
-//		state = (LedState) (GPIO_ReadOutputDataBit(port, pin) ^ offLevel);
-//	}
-//	return state;
-//}
+LedState Led::Toggle()
+{
+	if(state == OFF || state == ON || state == INIT)
+	{
+		GPIO_WriteBit(port, pin, (BitAction) !GPIO_ReadOutputDataBit(port, pin));
+		state = (LedState) (GPIO_ReadOutputDataBit(port, pin) ^ offLevel);
+	}
+	return state;
+}
 
